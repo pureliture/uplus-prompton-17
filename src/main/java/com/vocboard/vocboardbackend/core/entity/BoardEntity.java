@@ -7,15 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
-
-import java.util.Date;
 
 @Entity
 @Getter
 @SuperBuilder
-@Table(name = "image")
+@Table(name = "board")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class BoardEntity extends BasePersistenceEntity {
@@ -24,41 +21,41 @@ public class BoardEntity extends BasePersistenceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "referral", nullable = false)
+    @Column(nullable = false)
     private String referral;
 
-    @Column(name = "completed")
+    @Column
     private Boolean completed;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "inquiry_date")
+    @Temporal(TemporalType.TIME)
+    @Column
     private LocalDateTime inquiryDateTime;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "end_date")
+    @Temporal(TemporalType.TIME)
+    @Column
     private LocalDateTime endDateTime;
 
-    @Column(name = "reception_office")
+    @Column
     private String receptionOffice;
 
-    @Column(name = "product")
+    @Column
     private String product;
 
-    @Column(name = "question", length = 1000)
+    @Column(length = 1000)
     private String question;
 
-    @Column(name = "answer", length = 1000)
+    @Column(length = 1000)
     private String answer;
 
-    @Column(name = "additional_inquiry", length = 1000)
+    @Column(length = 1000)
     private String additionalInquiry;
 
-    @Column(name = "additional_answer", length = 1000)
+    @Column(length = 1000)
     private String additionalAnswer;
 
-    @Column(name = "misc", length = 1000)
+    @Column(length = 1000)
     private String misc;
 
-    @Column(name = "classification")
+    @Column
     private String classification;
 }
