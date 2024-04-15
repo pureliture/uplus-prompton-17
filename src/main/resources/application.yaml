@@ -1,0 +1,56 @@
+jasypt:
+  encryptor:
+    bean: jasyptEncryptorAES
+
+spring:
+  profiles:
+    include: API-KEY
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vocboard-database?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: verysecret
+
+  flyway:
+    enable: true
+    url: jdbc:mysql://localhost:3306/vocboard-database?useSSL=false&allowPublicKeyRetrieval=true
+    user: root
+    password: verysecret
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600 # 데이터 유지 시간(sec)
+      cache-null-values: true # null 캐싱 여부
+      host: localhost
+      port: 6379
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+
+springdoc:
+  version: '@project.version@'
+  api-docs:
+    path: /v3/api-docs
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  swagger-ui:
+    operations-sorter: alpha
+    tags-sorter: alpha
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    display-query-params-without-oauth2: true
+    doc-expansion: none
