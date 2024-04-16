@@ -12,7 +12,7 @@ import org.joda.time.LocalDateTime;
 @Entity
 @Getter
 @SuperBuilder
-@Table(name = "board")
+// @Table(name = "board")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class BoardEntity extends BasePersistenceEntity {

@@ -1,1 +1,1 @@
-rootProject.name = "vocboardbackend"
+rootProject.name = "uplus-prompton-17"

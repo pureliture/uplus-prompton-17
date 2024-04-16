@@ -19,22 +19,12 @@ public class QABoardEntity extends BasePersistenceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String product;
-
     @Column
-    private String machine;
-
-    @Column
-    private String
-
-    @Column
-    private String title;
-
+    private String questionType;
     @Column
     private String question;
-
     @Column
     private String answer;
 }
