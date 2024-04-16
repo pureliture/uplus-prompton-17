@@ -46,6 +46,7 @@ dependencies {
 	implementation("commons-io:commons-io:2.13.0")
 	implementation("com.opencsv:opencsv:5.5")
 	implementation("com.github.ozlerhakan:poiji:4.1.1")
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
 
 	implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
 	implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
