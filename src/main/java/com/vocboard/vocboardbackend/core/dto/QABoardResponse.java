@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 public class QABoardResponse {
 
-    private Long id;
+    private String id;
     private String product;
     private String questionType;
     private String question;

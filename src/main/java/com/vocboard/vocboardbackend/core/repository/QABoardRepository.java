@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface QABoardRepository extends JpaRepository<QABoardEntity, Long> {
+public interface QABoardRepository extends JpaRepository<QABoardEntity, String> {
 }

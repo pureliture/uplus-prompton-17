@@ -16,13 +16,13 @@ public class QABoardController {
     private final AdaAiLinkService adaAiLinkService;
 
     @GetMapping("/qaboard/{id}")
-    public QABoardResponse retrieveQABoardContent(@PathVariable Long id) {
+    public QABoardResponse retrieveQABoardContent(@PathVariable String id) {
 
         return qaBoardQueryService.retrieveQABoardContent(id);
     }
 
     @PostMapping("/qaboard")
-    public List<QABoardResponse> retrieveQABoardContentList(@RequestBody List<Long> idList) {
+    public List<QABoardResponse> retrieveQABoardContentList(@RequestBody List<String> idList) {
 
         return qaBoardQueryService.retrieveQABoardContents(idList);
     }

@@ -18,18 +18,18 @@ public class QABoardQueryService {
 
     private final AdaAiLinkService adaAiLinkService;
 
-    public QABoardResponse retrieveQABoardContent(Long id) {
+    public QABoardResponse retrieveQABoardContent(String id) {
 
         return qaBoardMapper.toResponse(qaBoardRepository.findById(id).orElseGet(() -> QABoardEntity.builder().build()));
     }
 
-    public List<QABoardResponse> retrieveQABoardContents(List<Long> idList) {
+    public List<QABoardResponse> retrieveQABoardContents(List<String> idList) {
 
         return qaBoardMapper.toResponseList(qaBoardRepository.findAllById(idList));
     }
 
     public List<QABoardResponse> retrieveMatchedQABoardContentsByAda(String question) {
-        List<Long> idList = adaAiLinkService.retrieveMatchedQAIdListByAda(question);
+        List<String> idList = adaAiLinkService.retrieveMatchedQAIdListByAda(question);
         return qaBoardMapper.toResponseList(qaBoardRepository.findAllById(idList));
     }
 

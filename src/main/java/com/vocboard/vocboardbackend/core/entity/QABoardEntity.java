@@ -18,7 +18,7 @@ public class QABoardEntity extends BasePersistenceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     @Column
     private String product;
     @Column
