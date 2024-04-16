@@ -7,7 +7,11 @@ import com.vocboard.vocboardbackend.core.repository.QABoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,8 +33,22 @@ public class QABoardQueryService {
     }
 
     public List<QABoardResponse> retrieveMatchedQABoardContentsByAda(String question) {
+
         List<String> idList = adaAiLinkService.retrieveMatchedQAIdListByAda(question);
-        return qaBoardMapper.toResponseList(qaBoardRepository.findAllById(idList));
+        List<QABoardEntity> qaBoardEntityList = qaBoardRepository.findAllById(idList);
+
+        // idList의 각 ID에 대해 인덱스를 매핑합니다.
+        Map<String, Integer> idOrder = new HashMap<>();
+        for (int i = 0; i < idList.size(); i++) {
+            idOrder.put(idList.get(i), i);
+        }
+
+        // 가져온 리스트를 idList의 순서대로 정렬합니다.
+        List<QABoardEntity> sortedList = qaBoardEntityList.stream()
+                .sorted(Comparator.comparingInt(entity -> idOrder.get(entity.getId())))
+                .collect(Collectors.toList());
+
+        return qaBoardMapper.toResponseList(sortedList);
     }
 
     public List<QABoardResponse> retrieveQABoardContentsAll() {
